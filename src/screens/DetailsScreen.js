@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, FlatList, SafeAreaView, Text } from "react-native";
+import { ActivityIndicator, FlatList, SafeAreaView, Text, View, TouchableOpacity } from "react-native";
 // import { SafeAreaView } from "react-native-safe-area-context";
 import QuranKemenag from "quran-kemenag";
 import { Box, Circle, Col, Gap, ImgIcon, Line, Padder, Row, ScaledText } from "urip-rn-kit";
@@ -10,6 +10,7 @@ import Sound from "react-native-sound";
 import Share from 'react-native-share';
 // import SoundPlayer from 'react-native-sound-player'
 var whoosh
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 const DetailsScreen = ({ navigation, route }) => {
     const [surah, setSurah] = React.useState(null)
@@ -123,22 +124,38 @@ const DetailsScreen = ({ navigation, route }) => {
         setVerses(data.verses || []);
         // console.log(data)
     }
-    return (
-        <SafeAreaView>
-
-            <Row height={50} style={{ paddingHorizontal: 15 }}>
+    // navigation.goBack()
+    /*
+       <Row height={50} style={{ paddingHorizontal: 15 }}>
                 <Col justifyCenter alignCenter>
                     <ImgIcon onPress={() => {
-                        navigation.goBack()
+                      
                     }} source={Icons.back} size={35} tintColor={Colors.grey2} />
                 </Col>
                 <Col size={25} justifyCenter >
                     {/* <ScaledText size={20} style={{textAlign:"center"}} bold color={Colors.purple1}>
                         {surah ? surah.surah_name_arabic : ""}
-                    </ScaledText> */}
+                    </ScaledText> 
+ 
+                    </Col>
+                    </Row>
+                    */
+    return (
+        <SafeAreaView>
 
-                </Col>
-            </Row>
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.goBack()
+                }}
+                style={{marginTop:20,marginBottom:20}}
+            >
+
+                <FontAwesome5
+                    name='arrow-left' size={30} color="#6632BB" style={{
+                        marginTop: 10, marginRight: 20
+                    }} />
+
+            </TouchableOpacity>
             <Padder horizontal={20}>
                 <Box justifyCenter alignCenter borderRadius={10} height={100} fullWidth backgroundImage={Images.bg}>
                     <ScaledText color={Colors.white} size={20} bold >
@@ -238,7 +255,7 @@ const VerseItem = (props) => {
                 </Row>
                 <Row justifyEnd>
                     <Padder all>
-                        <ScaledText size={22}>{props.data.verse_arabic}</ScaledText>
+                        <ScaledText size={22} color={"#000"} >{props.data.verse_arabic}</ScaledText>
                     </Padder>
                 </Row>
                 {/* <Row>

@@ -4,57 +4,71 @@ import React from 'react';
 import HomeScreen from './src/screens/HomeScreen'
 import DetailsScreen from './src/screens/DetailsScreen'
 
-const Stack=createNativeStackNavigator();
-import {StatusBar} from "react-native";
+// my love page
+import Move from "./tasks/move";
+import Doaa from "./tasks/doaa";
+import Masbaha from "./tasks/masbaha";
+import Splash from "./tasks/Splash";
 
-import  Colors  from "./src/assets/constants/Color";
 
 
-const App=()=>{
-return(
+const Stack = createNativeStackNavigator();
+import { StatusBar } from "react-native";
 
- 
-  <NavigationContainer >
-     <StatusBar
-  backgroundColor={Colors.purple2}
-  barStyle={"dark-content"}
-  translucent={true}
-  
+import Colors from "./src/assets/constants/Color";
 
-/>
-    <Stack.Navigator 
-    screenOptions={{headerShown:false}}
-   
-    
-    >
-    <Stack.Screen
-     name="Home" component={HomeScreen}
-     options={{ title: 'السور', headerStyle: {
+
+const App = () => {
+  return (
+
+
+    <NavigationContainer >
+     
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+
+        initialRouteName="Splash"
+      >
+        <Stack.Screen
+          name="Home" component={HomeScreen}
+          options={{
+            title: 'السور', headerStyle: {
               backgroundColor: Colors.purple2,
-            
+
             },
-            headerTitleAlign:"center",
-            headerShown:true,
+            headerTitleAlign: "center",
+            headerShown: true,
             headerTintColor: '#fff',
             headerTitleStyle: {
-                      fontWeight: 'bold',
-                     },
-                    
-            
-             }}
-              /> 
-         <Stack.Screen name="Details" component={DetailsScreen}  
-        options={{ title: 'Details', headerStyle: {
+              fontWeight: 'bold',
+            },
+
+
+          }}
+        />
+        <Stack.Screen name="Details" component={DetailsScreen}
+          options={{
+            title: 'Details', headerStyle: {
               backgroundColor: '#f4511e',
             },
-            headerTintColor: '#fff', }}
-             />
+            headerTintColor: '#fff',
+          }}
+        />
 
-    </Stack.Navigator>
+        <Stack.Screen name='Move' component={Move} />
+        <Stack.Screen name='Doaa' component={Doaa} />
 
-  </NavigationContainer>
+        <Stack.Screen name='Masbaha' component={Masbaha} />
+        <Stack.Screen name='Splash' component={Splash} />
 
 
-)
+
+
+      </Stack.Navigator>
+
+    </NavigationContainer>
+
+
+  )
 }
 export default App;
